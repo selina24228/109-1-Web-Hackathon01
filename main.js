@@ -17,31 +17,28 @@ for(var i=0; i<cells.length; ++i) {
 			cells[last_select-4].style.color="black";
 		}
 		last_select = this.innerHTML.split('\n')[0];
-		console.log(last_select);
 	})
+}
+
+function filledCell(){
+	if(last_select < 0){
+		alert("Please select one date first!!!");
+	}
+	else{
+		cells[last_select-4].innerHTML = last_select+'\n<span style="color:'+color.value+'">'+input.value+'<span>';
+		input.value = '';
+	}
 }
 
 input.addEventListener('keypress', function(e){
 	if(e.code =='Enter' && input.value != ''){
-		if(last_select < 0){
-			alert("Please select one date first!!!");
-		}
-		else{
-			cells[last_select-4].innerHTML = last_select+'\n'+input.value;
-			input.value = '';
-		}
+		filledCell()
 	}
 })
 
 
 button.addEventListener('click', function(){
-	if(last_select < 0){
-			alert("Please select one date first!!!");
-	}
-	else{
-		cells[last_select-4].innerHTML = last_select+'\n'+input.value;
-		input.value = '';
-	}
+	filledCell()
 })
 
 
